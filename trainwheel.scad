@@ -6,6 +6,8 @@
 // stepped riser, crowned+grooved tread, 12-spoke closed hub face.
 // All measurements in millimeters (mm)
 
+lego_axle = true;
+
 // Resolution
 $fn = 100;
 
@@ -56,18 +58,21 @@ channel_outer_dia = rim_ring_dia - 2 * hub_rim_wall;
 extender_height = 5;
 
 module axle_hole() {
-    /*h = wheel_width + 2;
-    for (a = [0, 90])
-        rotate([0, 0, a])
-            translate([-axle_span / 2, -axle_arm / 2, -1])
-                cube([axle_span, axle_arm, h]);*/
-    
-    // tt motor axle
-    h = wheel_width + 2 + extender_height;
-    axle_heigth = 3.7 + 0.02; // 0.02 tolerance
-    axle_width = 5.3;
-    translate([-axle_width / 2, -axle_heigth / 2, -1 - extender_height])
-        cube([axle_width, axle_heigth, h]);
+    if (lego_axle) {
+        h = wheel_width + 2;
+        for (a = [0, 90])
+            rotate([0, 0, a])
+                translate([-axle_span / 2, -axle_arm / 2, -1])
+                    cube([axle_span, axle_arm, h]);
+    }
+    else {
+        // tt motor axle
+        h = wheel_width + 2 + extender_height;
+        axle_heigth = 3.7 + 0.02; // 0.02 tolerance
+        axle_width = 5.3;
+        translate([-axle_width / 2, -axle_heigth / 2, -1 - extender_height])
+            cube([axle_width, axle_heigth, h]);
+    }
 }
 
 function wedge_pts(a0, span, r, steps = 8) =
@@ -130,6 +135,7 @@ module lego_train_wheel() {
             translate([0, 0, tread_end_z - eps])
                 cylinder(d = rim_ring_dia, h = hub_section_height + eps);
             
+            if (!lego_axle)
             translate([0, 0, -extender_height])
                 cylinder(extender_height, 4, 4);
         }
