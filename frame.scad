@@ -54,7 +54,7 @@ motor_length = 65 + 1 + wire_spacing;
 motor_wire_gap = 5;
 axle_offset = 11;
 
-motor_start_offset = 7;
+motor_start_offset = 7 - 2.2; // So the holes align with the lego studs
 eps = 0.01;
 tolerance = 0.2;
 
@@ -66,9 +66,9 @@ difference() {
         cube([case_width, lego_block_size(11), case_height]);
         
         // studs
-        lego_stud_grid(4, 9);
-        translate([0,lego_stud_spacing*10,0])
-        lego_stud_grid(4, 1);
+        lego_stud_grid(4, 8);
+        translate([0,lego_stud_spacing*9,0])
+        lego_stud_grid(4, 2);
     }
 
     // Thing sticking out at the front of the motor
@@ -81,7 +81,7 @@ difference() {
     cube([motor_width,motor_length,motor_width]);
     
     // Wire hole
-    translate([case_width/2-motor_width/2,motor_start_offset + motor_length-motor_wire_gap,-eps])
+    translate([case_width/2-motor_width/2,motor_start_offset + motor_length-motor_wire_gap-3.4,-eps])
     cube([motor_width,motor_wire_gap,lego_plate_heigth+eps*2]);
     
     // Motor axle hole
