@@ -1,7 +1,7 @@
 lego_block_height = 9.6;
 lego_stud_spacing = 8.0;
 lego_plate_heigth = 3.2;
-lego_stud_dia = 4.8;
+lego_stud_dia = 4.8 + 0.2;
 lego_stud_height = 1.8;
 function lego_block_size(size) = size * lego_stud_spacing - 0.2;
 
