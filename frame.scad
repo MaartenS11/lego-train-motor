@@ -87,7 +87,7 @@ difference() {
     cube([motor_width,motor_wire_gap,lego_plate_heigth+eps*2]);
     
     // Motor axle hole
-    hole_r = 4 + 1 + tolerance;
+    hole_r = 4 + 0.5 + tolerance;
     translate([case_width + 1,motor_start_offset + axle_offset,lego_plate_heigth + axle_offset]) {
         rotate([0, -90, 0])
         cylinder(case_width + 2, hole_r, hole_r, $fn=32);
