@@ -17,7 +17,7 @@ module lego_stud_grid(nx, ny) {
                 cylinder(h = lego_stud_height, d = lego_stud_dia, $fn = 30);
 }
 
-lego_hole_tolerance = 0.3;
+lego_hole_tolerance = 0.25;
 
 module lego_hole() {
     translate([7.8, 0, 0])
@@ -55,12 +55,13 @@ motor_wire_gap = 5;
 axle_offset = 11;
 
 motor_start_offset = 7 - 2.2; // So the holes align with the lego studs
+motor_start_extra_space = 1;
 eps = 0.01;
 tolerance = 0.2;
 
 difference() {
     case_width = lego_block_size(4);
-    case_height = lego_block_height * 2;
+    case_height = lego_block_height * 2.5;
 
     union() {
         cube([case_width, lego_block_size(11), case_height]);
@@ -77,8 +78,8 @@ difference() {
     cube([3, front_stick_length, case_height]);
     
     // Motor itself
-    translate([case_width/2-motor_width/2,motor_start_offset,lego_plate_heigth])
-    cube([motor_width,motor_length,motor_width]);
+    translate([case_width/2-motor_width/2,motor_start_offset-motor_start_extra_space,lego_plate_heigth])
+    cube([motor_width,motor_length+motor_start_extra_space,motor_width]);
     
     // Wire hole
     translate([case_width/2-motor_width/2,motor_start_offset + motor_length-motor_wire_gap-3.4,-eps])
@@ -94,7 +95,7 @@ difference() {
     cube([case_width + 2, hole_r * 2, case_height]);
     
     // Motor mounting holes
-    translate([case_width + 1,motor_start_offset + axle_offset + 20.1,lego_plate_heigth + axle_offset - 8.75])
+    translate([case_width + 1,motor_start_offset + axle_offset + 20,lego_plate_heigth + axle_offset - 8.75])
     rotate([0, -90, 0])
     cylinder(case_width + 2, 1.5 + tolerance, 1.5 + tolerance, $fn=20);
     
