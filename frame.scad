@@ -50,6 +50,7 @@ module lego_hole_long(hole_length) {
 
 motor_width = 24; // trying to give it some space but also not too much
 motor_heigth = 22.44;
+ground_clearance = 0.5;
 wire_spacing = 3;
 motor_length = 65 + 1 + wire_spacing;
 motor_wire_gap = 5;
@@ -62,7 +63,7 @@ tolerance = 0.2;
 
 difference() {
     case_width = lego_block_size(4);
-    case_height = motor_heigth + lego_plate_heigth;
+    case_height = motor_heigth + lego_plate_heigth - ground_clearance;
 
     union() {
         cube([case_width, lego_block_size(11), case_height]);
@@ -113,14 +114,12 @@ difference() {
         rotate([0,0,180])
         lego_hole_long(case_width/2+eps);
         
-        for (offset = [1, -1]) {
-            translate([0,0,-offset * lego_stud_spacing]) {
-                lego_hole();
-                
-                translate([case_width,0,0])
-                rotate([0,0,180])
-                lego_hole();
-            }            
-        }
+        translate([0,0,-lego_stud_spacing]) {
+            lego_hole();
+            
+            translate([case_width,0,0])
+            rotate([0,0,180])
+            lego_hole();
+        }            
     }
 }
