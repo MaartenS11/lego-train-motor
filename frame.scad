@@ -50,7 +50,6 @@ module lego_hole_long(hole_length) {
 
 motor_width = 24; // trying to give it some space but also not too much
 motor_heigth = 22.44;
-ground_clearance = 0.5;
 wire_spacing = 3;
 motor_length = 65 + 1 + wire_spacing;
 motor_wire_gap = 5;
@@ -63,7 +62,7 @@ tolerance = 0.2;
 
 difference() {
     case_width = lego_block_size(4);
-    case_height = motor_heigth + lego_plate_heigth - ground_clearance;
+    case_height = lego_block_height * 2;
 
     union() {
         cube([case_width, lego_block_size(11), case_height]);
@@ -102,9 +101,9 @@ difference() {
     cylinder(case_width + 2, 1.5 + tolerance, 1.5 + tolerance, $fn=20);
     
     // Bottom mounting holes
-    translate([case_width + 1,motor_start_offset + axle_offset + 20,lego_plate_heigth + axle_offset + 8.75])
+    /*translate([case_width + 1,motor_start_offset + axle_offset + 20,lego_plate_heigth + axle_offset + 8.75])
     rotate([0, -90, 0])
-    cylinder(case_width + 2, 1.5 + tolerance, 1.5 + tolerance, $fn=20);
+    cylinder(case_width + 2, 1.5 + tolerance, 1.5 + tolerance, $fn=20);*/
     
     // Lego axle + extra technic hole
     translate([0,motor_start_offset + axle_offset + lego_block_size(8),lego_plate_heigth + axle_offset]) {
