@@ -13,3 +13,6 @@ train wheels and a motor frame. The motor itself uses a TT motor which can be bo
 `frame.scad` models a frame that goes around a TT motor, resulting in a LEGO-compatible train motor. The front axle is the TT motor's own axle, onto which you attach two train wheels. At the back there is a hole in which you put a regular LEGO axle and some train wheels. If you don't currently have any train wheels, or need more, you can print `trainwheel.scad` with the regular LEGO axle option enabled.
 
 ![Frame render](images/frame.png)
+
+## Result
+![Result](images/result.jpg)
