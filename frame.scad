@@ -113,12 +113,14 @@ difference() {
         rotate([0,0,180])
         lego_hole_long(case_width/2+eps);
         
-        translate([0,0,-lego_stud_spacing]) {
-            lego_hole();
-            
-            translate([case_width,0,0])
-            rotate([0,0,180])
-            lego_hole();
+        for (offset = [1, -1]) {
+            translate([0,0,-offset * lego_stud_spacing]) {
+                lego_hole();
+                
+                translate([case_width,0,0])
+                rotate([0,0,180])
+                lego_hole();
+            }            
         }
     }
 }
