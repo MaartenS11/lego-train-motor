@@ -1,3 +1,4 @@
+// This trainwheel was unlike the motor frame mostly generated using CLAUDE + manual edits.
 // Parametric LEGO Train Wheel, modeled after the official wheel that ships
 // on the 9V/PF train motor: "Train Wheel for RC Train w Technic Axle Hole
 // and Rubber Ring" (BrickLink 55423c01 / LDraw u9241+u9242).
@@ -6,7 +7,7 @@
 // stepped riser, crowned+grooved tread, 12-spoke closed hub face.
 // All measurements in millimeters (mm)
 
-lego_axle = true;
+lego_axle = false;
 
 // Resolution
 $fn = 100;
