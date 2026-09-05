@@ -44,8 +44,8 @@ pocket_floor  = -0.3;    // material left at the bottom of the recessed channel
 
 // Technic cross-axle hole (fits the train motor's output shaft), measured
 // off the reference part: ~5.2mm tip-to-tip, ~2.2mm arm width
-axle_span = 5.2;
-axle_arm  = 2.2;  // adjust both for your printer tolerance
+axle_span = 4.96;
+axle_arm  = 1.84;  // adjust both for your printer tolerance
 
 eps = 0.05;  // overlap between stacked solids, avoids coplanar z-fighting
 
